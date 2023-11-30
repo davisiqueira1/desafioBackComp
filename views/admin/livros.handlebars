@@ -1,0 +1,27 @@
+<h2>Lista de livros: </h2>
+<hr />
+<a href="/admin/livros/add">
+    <button class="btn btn-success">Novo livro</button>
+</a>
+<hr />
+
+{{#each livros}}
+    <div class="card">
+        <div class="card-body">
+            <h4>{{titulo}}</h4>
+            <p>Descrição: {{descricao}}</p>
+            <small>Data: {{data}}</small><br />
+            <small>Gênero: {{genero.nome}}</small><br />
+            <a href="/admin/livros/edit/{{_id}}"><button
+                    class="btn btn-success mt-2"
+                >Editar livro</button>
+            </a>
+            <form action="/admin/livros/deletar" method="post">
+                <input type="hidden" name="id" value="{{_id}}" />
+                <button type="submit" class="btn btn-danger mt-2">Deletar livro</button>
+            </form>
+        </div>
+    </div>
+{{else}}
+    <h4>Nenhum livro registrado</h4>
+{{/each}}

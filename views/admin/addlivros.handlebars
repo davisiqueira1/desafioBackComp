@@ -1,0 +1,58 @@
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{/each}}
+
+<h4>Novo livro:</h4>
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/livros/novo" method="post">
+            <label for="titulo">Título: </label>
+            <input
+                placeholder="Título do livro"
+                type="text"
+                name="titulo"
+                class="form-control"
+                required
+            />
+            <label for="descricao">Descrição: </label>
+            <textarea
+                placeholder="Descrição breve do livro"
+                name="descricao"
+                class="form-control"
+            ></textarea>
+            <label for="paginas">Número de páginas: </label>
+            <input
+                placeholder="Ex: 125"
+                type="number"
+                name="paginas"
+                class="form-control"
+                required
+            />
+            <label for="autor">Autor: </label>
+            <input
+                placeholder="Nome do autor"
+                type="text"
+                name="autor"
+                class="form-control"
+                required
+            />
+            <label for="editora">Editora: </label>
+            <input
+                placeholder="Nome da editora"
+                type="text"
+                name="editora"
+                class="form-control"
+                required
+            />
+            <label for="genero">Gênero: </label>
+            <select class="form-select" name="genero" required>
+                {{#each generos}}
+                    <option value="{{_id}}">{{nome}}</option>
+                {{else}}
+                    <option value="0">Nenhum gênero registrado</option>
+                {{/each}}
+            </select><br />
+            <button class="btn btn-success" type="submit">Criar livro</button>
+        </form>
+    </div>
+</div>

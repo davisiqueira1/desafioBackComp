@@ -1,0 +1,37 @@
+<div class="jumbotron">
+    <h1 class="display-4">Bem-vindo a Biblioteca!</h1>
+    <p class="lead">Este sistema de biblioteca foi desenvolvido como desafio da
+        trilha de backend da Comp Júnior!</p>
+    {{#if user}}{{else}}
+        <p class="lead">
+            <a
+                class="btn btn-lg bg-success text-light"
+                href="/usuario/registro"
+                role="button"
+            >Crie uma conta</a>
+        </p>
+    {{/if}}
+</div>
+
+<hr />
+
+<h2>Últimos livros adicionados:</h2>
+{{#if user}}
+    {{#each livros}}
+        <div class="card mb-2">
+            <div class="card-body">
+                <h3>{{titulo}}</h3>
+                <p>{{descricao}}</p>
+                <a href="/livro/{{_id}}"><button class="btn btn-success">Leia
+                        mais</button></a>
+                <hr />
+                <small>Gênero: {{genero.nome}}</small><br />
+                <small>Data de publicação: {{data}}</small>
+            </div>
+        </div>
+    {{else}}
+        <h5>Nenhum livro</h5>
+    {{/each}}
+{{else}}
+    <h5>Entre com uma conta para ver os últimos livros adicionados!</h5>
+{{/if}}

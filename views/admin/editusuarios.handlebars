@@ -1,0 +1,33 @@
+<h3>Edição de usuário</h3>
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/usuarios/edit" method="post">
+            <input type="hidden" name="id" value="{{usuario._id}}" />
+            <label for="nome">Nome: </label>
+            <input
+                value="{{usuario.nome}}"
+                type="text"
+                name="nome"
+                class="form-control"
+                required
+            />
+            <label for="email">Email: </label>
+            <input
+                value="{{usuario.email}}"
+                type="email"
+                name="email"
+                class="form-control"
+                required
+            />
+            <label for="administrador">Administrador:</label>
+            <input
+                value="{{usuario.ehAdmin}}"
+                type="number"
+                name="administrador"
+                class="form-control"
+                required
+            />
+            <button type="submit" class="btn btn-success mt-3">Editar usuário</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+{{#each erros}}
+    <div class="alert alert-danger">{{texto}}</div>
+{{/each}}
+
+<h4>Editar livro:</h4>
+<div class="card">
+    <div class="card-body">
+        <form action="/admin/livros/edit" method="post">
+            <input type="hidden" value="{{livro._id}}" name="id" />
+            <label for="titulo">Título: </label>
+            <input
+                value="{{livro.titulo}}"
+                placeholder="Título do livro"
+                type="text"
+                name="titulo"
+                class="form-control"
+                required
+            />
+            <label for="descricao">Descrição: </label>
+            <textarea
+                placeholder="Descrição breve do livro"
+                name="descricao"
+                class="form-control"
+            >{{livro.descricao}}</textarea>
+            <label for="paginas">Número de páginas: </label>
+            <input
+                value="{{livro.paginas}}"
+                placeholder="Ex: 125"
+                type="number"
+                name="paginas"
+                class="form-control"
+                required
+            />
+            <label for="autor">Autor: </label>
+            <input
+                value="{{livro.autor}}"
+                placeholder="Nome do autor"
+                type="text"
+                name="autor"
+                class="form-control"
+                required
+            />
+            <label for="editora">Editora: </label>
+            <input
+                value="{{livro.editora}}"
+                placeholder="Nome da editora"
+                type="text"
+                name="editora"
+                class="form-control"
+                required
+            />
+            <label for="genero">Gênero: </label>
+            <select class="form-select" name="genero" required>
+                {{#each generos}}
+                    <option value="{{_id}}">{{nome}}</option>
+                {{else}}
+                    <option value="0">Nenhum gênero registrado</option>
+                {{/each}}
+            </select><br />
+            <button class="btn btn-success" type="submit">Criar livro</button>
+        </form>
+    </div>
+</div>
